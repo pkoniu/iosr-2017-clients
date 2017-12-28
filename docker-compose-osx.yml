@@ -1,0 +1,23 @@
+version: "2"
+
+services:
+  clients:
+    image: iosr2017/clients:osx
+    ports:
+      - "5100:80"
+  orders:
+    image: iosr2017/orders:osx
+    ports:
+      - "5101:80"
+  storage:
+    image: iosr2017/storage:osx
+    ports:
+      - "5102:80"
+  payments:
+    image: iosr2017/payments:osx
+    ports:
+      - "5103:80"
+  menu:
+    image: iosr2017/menu:osx
+    ports:
+      - "5104:1433"
