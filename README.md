@@ -11,3 +11,5 @@
 - Cannot start docker with app on OSX because of failure about connecting to mongo?
     - `sudo ifconfig lo0 alias 10.0.2.2`
     - Put `MONGO_HOST=10.0.2.2` to .env.
+- How to start everything using docker-compose?
+    - `docker-compose -f [docker-compose.yml for your OS] up -d`
