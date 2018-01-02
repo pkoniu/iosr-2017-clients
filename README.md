@@ -1,4 +1,5 @@
 # iosr-2017-clients
+[![Build Status](https://travis-ci.org/pkoniu/iosr-2017-clients.svg?branch=master)](https://travis-ci.org/pkoniu/iosr-2017-clients)
 
 ### Step by step
 1. Clone the repository
