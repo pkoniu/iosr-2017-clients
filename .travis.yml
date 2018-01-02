@@ -9,9 +9,9 @@ before_script:
 script:
 - sh .travis/dockerhub/build.sh
 - sh .travis/heroku/build.sh
-after_success:
+before_deploy:
 - npm run infra
-after_script:
+deploy:
 - sh .travis/dockerhub/push.sh
 - sh .travis/heroku/push.sh
 env:
