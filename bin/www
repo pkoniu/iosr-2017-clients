@@ -2,6 +2,14 @@
 
 require('dotenv').config();
 
+const {
+    MONGO_URL,
+    MONGO_HOST = 'localhost',
+    MONGO_PORT = '27017',
+    DB_NAME = 'iosr2017-clients',
+    PORT = '3000'
+} = process.env;
+
 let server, port;
 
 const MongoClient = require('mongodb').MongoClient;
@@ -11,12 +19,12 @@ console.log(`Connecting to: ${mongoUrl}`);
 MongoClient.connect(mongoUrl)
     .then(mongodb => {
         console.log(`Connected to db.`);
-        
+
         const app = require('../src/app')(mongodb);
         const debug = require('debug')('iosr-2017:server');
         const http = require('http');
 
-        port = normalizePort(process.env.PORT || '3000');
+        port = normalizePort(PORT);
         app.set('port', port);
 
         server = http.createServer(app);
@@ -52,9 +60,9 @@ function onError(error) {
         throw error;
     }
 
-    var bind = typeof port === 'string'
-        ? 'Pipe ' + port
-        : 'Port ' + port;
+    var bind = typeof port === 'string' ?
+        'Pipe ' + port :
+        'Port ' + port;
 
     // handle specific listen errors with friendly messages
     switch (error.code) {
@@ -73,14 +81,13 @@ function onError(error) {
 
 function onListening() {
     var addr = server.address();
-    var bind = typeof addr === 'string'
-        ? 'pipe ' + addr
-        : 'port ' + addr.port;
+    var bind = typeof addr === 'string' ?
+        'pipe ' + addr :
+        'port ' + addr.port;
     console.log('Listening on ' + bind);
 }
 
 function createMongoUrl() {
-    const {MONGO_URL, MONGO_HOST, MONGO_PORT, DB_NAME} = process.env;
-    const customUrl = `mongodb://${process.env.MONGO_HOST}:${process.env.MONGO_PORT}/${process.env.DB_NAME}`
-    return MONGO_URL || customUrl; 
+    const customUrl = `mongodb://${MONGO_HOST}:${MONGO_PORT}/${DB_NAME}`
+    return MONGO_URL || customUrl;
 }
