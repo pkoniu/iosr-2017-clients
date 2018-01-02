@@ -8,8 +8,11 @@ before_script:
 - npm test
 script:
 - sh .travis/dockerhub/build.sh
-- sh .travis/dockerhub/push.sh
 - sh .travis/heroku/build.sh
+after_success:
+- npm run infra
+after_script:
+- sh .travis/dockerhub/push.sh
 - sh .travis/heroku/push.sh
 env:
   global:
