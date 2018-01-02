@@ -1,6 +1,6 @@
 const heroin = require('heroin-js');
 
-const configurator = heroin(process.env.HEROKU_API_TOKEN);
+const configurator = heroin(process.env.HEROKU_AUTH_TOKEN);
 const configuration = require('./configuration');
 
 configurator(configuration)
