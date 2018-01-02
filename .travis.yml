@@ -4,11 +4,13 @@ services:
 language: node_js
 node_js:
 - '8'
-script:
+before_script:
 - npm test
-after_success:
-- sh .travis/push_dockerhub_registry.sh
-- sh .travis/push_heroku_registry.sh
+script:
+- sh .travis/dockerhub/build.sh
+- sh .travis/dockerhub/push.sh
+- sh .travis/heroku/build.sh
+- sh .travis/heroku/push.sh
 env:
   global:
   - DOCKER_USER=iosr2017

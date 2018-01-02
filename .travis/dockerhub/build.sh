@@ -10,4 +10,3 @@ else
 fi
 
 docker build -f Dockerfile -t $DOCKER_USER/$DOCKER_REPO:$TAG .
-docker push $DOCKER_USER/$DOCKER_REPO
