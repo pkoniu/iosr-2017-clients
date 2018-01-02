@@ -7,7 +7,7 @@ module.exports = {
     name: HEROKU_APP_NAME,
     region: 'eu',
     maintenance: false,
-    stack: 'cedar-14',
+    stack: 'container',
     config_vars: {
         NODE_ENV: 'production'
     },
