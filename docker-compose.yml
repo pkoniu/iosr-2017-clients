@@ -15,11 +15,25 @@ services:
     links:
       - mongo
       - menu-service
+  payments-service:
+    build: ./../iosr-2017-payments
+    image: iosr2017/payments
+    ports:
+      - "5102:80"
+    links:
+      - mongo
+  storage-service:
+    build: ./../iosr-2017-storage
+    image: iosr2017/storage
+    ports:
+      - "5103:80"
+    links:
+      - mongo
   menu-service:
     build: ./../iosr-2017-menu
     image: iosr2017/menu
     ports:
-      - "5102:80"
+      - "5104:80"
     links:
       - mongo
   mongo:
