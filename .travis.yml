@@ -7,7 +7,8 @@ node_js:
 script:
 - npm test
 after_success:
-- sh .travis/push_dockerhub.sh
+- sh .travis/push_dockerhub_registry.sh
+- sh .travis/push_heroku_registry.sh
 env:
   global:
   - DOCKER_USER=iosr2017
