@@ -9,7 +9,7 @@ module.exports = {
     maintenance: false,
     stack: 'container',
     config_vars: {
-        NODE_ENV: 'production'
+        NODE_ENV: 'test'
     },
     addons: {
         librato: {
