@@ -13,6 +13,11 @@ services:
     links:
       - mongo
   orders-service:
+    environment:
+      - MONGO_HOST=mongo
+      - MONGO_PORT=27017
+      - DB_NAME=iosr2017-orders
+      - PORT=80
     build: ./../iosr-2017-orders
     image: iosr2017/orders
     ports:
@@ -21,6 +26,11 @@ services:
       - mongo
       - menu-service
   payments-service:
+    environment:
+      - MONGO_HOST=mongo
+      - MONGO_PORT=27017
+      - DB_NAME=iosr2017-payments
+      - PORT=80
     build: ./../iosr-2017-payments
     image: iosr2017/payments
     ports:
@@ -28,6 +38,11 @@ services:
     links:
       - mongo
   storage-service:
+    environment:
+      - MONGO_HOST=mongo
+      - MONGO_PORT=27017
+      - DB_NAME=iosr2017-storage
+      - PORT=80
     build: ./../iosr-2017-storage
     image: iosr2017/storage
     ports:
@@ -35,6 +50,11 @@ services:
     links:
       - mongo
   menu-service:
+    environment:
+      - MONGO_HOST=mongo
+      - MONGO_PORT=27017
+      - DB_NAME=iosr2017-menu
+      - PORT=80
     build: ./../iosr-2017-menu
     image: iosr2017/menu
     ports:
