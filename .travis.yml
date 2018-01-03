@@ -5,8 +5,10 @@ language: node_js
 node_js:
 - '8'
 before_script:
+- wget -qO- https://toolbelt.heroku.com/install.sh | sh
 - npm test
 script:
+- /usr/local/heroku/bin/heroku -v
 - sh .travis/script.sh
 env:
   global:
