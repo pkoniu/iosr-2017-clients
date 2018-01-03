@@ -8,8 +8,7 @@ language: node_js
 node_js:
 - '8'
 before_install:
-- openssl aes-256-cbc -K $encrypted_b7b87b4dd2e2_key -iv $encrypted_b7b87b4dd2e2_iv
-  -in .netrc.enc -out .netrc -d
+- openssl aes-256-cbc -K $encrypted_b7b87b4dd2e2_key -iv $encrypted_b7b87b4dd2e2_iv -in .netrc.enc -out .netrc -d
 - sudo cat .netrc > ~/.netrc
 before_script:
 - npm test
@@ -19,11 +18,12 @@ script:
 - npm run infra
 - heroku git:remote -a iosr2017clients-staging
 - git push heroku master
+- npm run test:integration
+- heroku pipelines:promote -r iosr2017clients_staging -t iosr2017clients_staging
 env:
   global:
   - DOCKER_USER=iosr2017
   - DOCKER_REPO=clients
   - HEROKU_APP_NAME=iosr2017clients
   - secure: x8Nk+Zt+W4Ac7p43BpBWKQaNUA3FfI0uBYzpZFJtvpwP1dDBdA6MoPqEI3UC0ABkDnDfwbFmAsor9xqXXR+h0xks3EJedIhFeA2FnTdl4HJRsU+vKm76UuHkOCTS2PXblgl2nahh8ynFLA6wSejKJfxeQIVdOsebUkGyIHR9z/VUKlYxGJ+WiG0YzMn3PjrhIGu4V1xqUdoFffnX6VniZrk+eSsDlfeRQhnjLigQiTBUrVzgzdHF1LUCWej1pKZ10Kb+qfuS3fxIULe+u7IFNRTQV6qRb90QkymG8wGFoxqSt8a6fJ8fZQETwxAGJxGcj2iTIDhLcViv3tUTWZ10C+NAQID2P6YZRTrlOxVIfnz84zyD/QQ9ShYrercZ5nz/Z+YKMal1tPZvG3FqWIpwdK51aoWMxinzfRUbshNckezu21z8T0GrF66ABl6+5ybfDbvPC5c7ewnsSe56ZnOMCHXX0CNES6bXi8fZmBZxIoiW8s14x9uUfb/G0hKIUncgso/eJN75QO4pI4FGqrdl4aLruKE64rARKfLDECr9zUxwJYZM/fE0aNTbSA/eE1b1LKv2OBLlxYKVcmQyyh/cxY+B5w8A7KA9mhq7lgKkfe42zVQm5gxUBwy8EawW9MdkcfZqkAZqGKKPz1SzQMVkwSNxuCgtwlfq+avDXwRsF6Y=
-  - secure: p/KDxrxQHz73e1y3PXXmT9Ukjz8fWLeVtrJuNfaEgrC4Kh/3oG5DdqWdqWcEPex5+sh7mlRcgLqXXxS9I6UScFqwgB7etKEw5M9+q4ik3AqD8/3HRpeiaC6dFJ/1s7+qnffNVr7XslJaUh7DNbzxyK3uLvIQdIPe30W8PMAuPrScZlo1x9kcne33+YQVgBvMKAMLgTs8IhDyVwytIVrCYZAMcFrOWvSESWj0XuC8zzD0XmqV++bnqa+PAJOdP58FPMPQmQiA58hZ43tcP4QshTuKrknS+6kKm4Pf3FKTd1IIoTnsEWOqlacaCbFwM4ztGd+L04eo8ZTSMqeycZfM8KT76rjjVelej+gO4d/L/kFt9hgl3dkjvtEf4uE5Bcu+/kHt9LO7o6leyNMxLjSLxxK1cuDfZIL6TIAT4dJVWtDXyc6KJzWIB5BnFqcEBmgRqLiBy/RqmbIy8FRUOqQi9qC8Zuo72Tyf7FptzrtVtZMIbzwcFx4kUvHjXk8O0631LQf2fcWvCZ49pccgW+1JH+oG0vJiJmTTC206Y9jUnA+D1PYn3XjiAX1VObu9G3aHIl6NVMXdplR+bg8CXgGVIku6V6WzRRB96ddYcbpYM/mhsA+5Ba561TX0CoZfl/7Umy7Bx3rggX9+gPpo7dL5HzCVd9XTZnQhxD8QtVhc1qo=
   - secure: QUDxuokYKx4qYwfqw02Whu+ydv775wwq9E09xCk/MQJWeYLypwcixGwTELQbbrPYCVYnWEL9AKQk2FeVpAA78g33HMbpP2l8NVavyD6Pd+BiY+pdn/Zn+UQF/DbT3SnfEM5q3rutA8cXTty0DAWa51LY9gky/cwBGlj2CADylpp0Idg1Xk00Pf2X9cMkacKXj4ajlzZ8d+V94xFhU4fmDeetn/eLuOxadChm7Wd4tydDa/FXvv2+T2HiDCBnWywlLJ+04rFNynnyyDqdzbL7ZCDHO9ktZ3Js/WeQwI7s5CzTtNRGRdXOWcre9EwvGLavtmI4pAVswrmMY6246vMS3Jb1FtvR9xX9rdq1+Q+rHtftsnGV7OHEkFiDVn+ztd5dcpX9IUtUyTs3u6v63RGHQhHDGwJQCzhgRZuhlDklgG+Aj9L2Iwb5nHzlnRMBdXc/WqUBzyvcAkWzB6qSTTquAPqsxePa7YTyKhHHj3Hs9JtoYVhKa3ZmlzIDV4Nga/a3oWaI55/4zbteh4Br/WIw21JZRxGYVIoCHuZVQne2B4Foqxwdfveeieh0DbKLIlXo7AEO4H5oOoBEFok7hr3pjwVfNZm/u1xX5eD8zc7W+uuzl/+iTLw1qQ24dQqnqniTRKDIjA+dWZekVQnbBBoq16jzwtF1qFwMBG7UBK7JDDI=
