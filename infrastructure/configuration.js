@@ -9,7 +9,7 @@ module.exports = {
     maintenance: false,
     stack: 'container',
     config_vars: {
-        NODE_ENV: 'test'
+        NODE_ENV: 'production'
     },
     addons: {
         librato: {
@@ -21,5 +21,9 @@ module.exports = {
         mongolab: {
             plan: 'mongolab:sandbox'
         }
-    }
+    },
+    collaborators: [
+            'patryk.konior@gmail.com',
+            'stawickipiotr94@gmail.com'
+    ]
 };
