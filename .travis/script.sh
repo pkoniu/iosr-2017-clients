@@ -1,7 +1,7 @@
 #!/bin/sh
 
 sh .travis/dockerhub/build.sh
-sh ./heroku/build.sh
+sh .travis/heroku/build.sh
 npm run infra
-sh ./dockerhub/push.sh
-sh ./heroku/push.sh
+sh .travis/dockerhub/push.sh
+sh .travis/heroku/push.sh
