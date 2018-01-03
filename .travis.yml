@@ -1,16 +1,18 @@
 sudo: required
 services:
 - docker
+- heroku
 language: node_js
 node_js:
 - '8'
-before_install:
-- wget -qO- https://cli-assets.heroku.com/install-ubuntu.sh | sh
 before_script:
 - npm test
 script:
-- /usr/local/heroku/bin/heroku -v
-- sh .travis/script.sh
+- sh .travis/dockerhub/build.sh
+- sh .travis/dockerhub/push.sh
+- npm run infra
+- heroku git:remote -a iosr2017clients-staging
+- git push heroku master
 env:
   global:
   - DOCKER_USER=iosr2017
