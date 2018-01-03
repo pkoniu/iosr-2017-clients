@@ -21,6 +21,7 @@ script:
 - heroku git:remote -a iosr2017clients-staging
 - git push heroku master
 - npm run test:integration
+after_success:
 - heroku pipelines:promote -a iosr2017clients-staging -r master -t iosr2017clients-production
 env:
   global:
