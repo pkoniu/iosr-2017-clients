@@ -10,6 +10,8 @@ node_js:
 before_install:
 - openssl aes-256-cbc -K $encrypted_b7b87b4dd2e2_key -iv $encrypted_b7b87b4dd2e2_iv -in .netrc.enc -out .netrc -d
 - sudo cat .netrc > ~/.netrc
+install:
+- npm install
 before_script:
 - npm test
 script:
@@ -19,7 +21,7 @@ script:
 - heroku git:remote -a iosr2017clients-staging
 - git push heroku master
 - npm run test:integration
-- heroku pipelines:promote -r iosr2017clients_staging -t iosr2017clients_staging
+- heroku pipelines:promote -r iosr2017clients_staging -t iosr2017clients_production
 env:
   global:
   - DOCKER_USER=iosr2017
