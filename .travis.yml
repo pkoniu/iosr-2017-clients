@@ -7,13 +7,7 @@ node_js:
 before_script:
 - npm test
 script:
-- sh .travis/dockerhub/build.sh
-- sh .travis/heroku/build.sh
-after_success:
-- npm run infra
-after_script:
-- sh .travis/dockerhub/push.sh
-- sh .travis/heroku/push.sh
+- sh .travis/script.sh
 env:
   global:
   - DOCKER_USER=iosr2017
