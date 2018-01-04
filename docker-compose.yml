@@ -37,6 +37,9 @@ services:
       - "5102:80"
     links:
       - mongo
+      - menu-service
+      - storage-service
+      - orders-service
   storage-service:
     environment:
       - MONGO_HOST=mongo
