@@ -10,7 +10,6 @@ node_js:
 before_install:
 - openssl aes-256-cbc -K $encrypted_b7b87b4dd2e2_key -iv $encrypted_b7b87b4dd2e2_iv -in .netrc.enc -out .netrc -d
 - git clone https://github.com/pkoniu/iosr-2017-deployment.git
-- pwd
 - sh iosr-2017-deployment/before_install.sh
 install:
 - npm install
@@ -25,5 +24,6 @@ env:
   - DOCKER_USER=iosr2017
   - DOCKER_REPO=clients
   - HEROKU_APP_NAME=iosr2017clients
+  - DEPLOYMENT_SCRIPTS_PATH=/home/travis/build/iosr-2017-deployment
   - secure: x8Nk+Zt+W4Ac7p43BpBWKQaNUA3FfI0uBYzpZFJtvpwP1dDBdA6MoPqEI3UC0ABkDnDfwbFmAsor9xqXXR+h0xks3EJedIhFeA2FnTdl4HJRsU+vKm76UuHkOCTS2PXblgl2nahh8ynFLA6wSejKJfxeQIVdOsebUkGyIHR9z/VUKlYxGJ+WiG0YzMn3PjrhIGu4V1xqUdoFffnX6VniZrk+eSsDlfeRQhnjLigQiTBUrVzgzdHF1LUCWej1pKZ10Kb+qfuS3fxIULe+u7IFNRTQV6qRb90QkymG8wGFoxqSt8a6fJ8fZQETwxAGJxGcj2iTIDhLcViv3tUTWZ10C+NAQID2P6YZRTrlOxVIfnz84zyD/QQ9ShYrercZ5nz/Z+YKMal1tPZvG3FqWIpwdK51aoWMxinzfRUbshNckezu21z8T0GrF66ABl6+5ybfDbvPC5c7ewnsSe56ZnOMCHXX0CNES6bXi8fZmBZxIoiW8s14x9uUfb/G0hKIUncgso/eJN75QO4pI4FGqrdl4aLruKE64rARKfLDECr9zUxwJYZM/fE0aNTbSA/eE1b1LKv2OBLlxYKVcmQyyh/cxY+B5w8A7KA9mhq7lgKkfe42zVQm5gxUBwy8EawW9MdkcfZqkAZqGKKPz1SzQMVkwSNxuCgtwlfq+avDXwRsF6Y=
   - secure: QUDxuokYKx4qYwfqw02Whu+ydv775wwq9E09xCk/MQJWeYLypwcixGwTELQbbrPYCVYnWEL9AKQk2FeVpAA78g33HMbpP2l8NVavyD6Pd+BiY+pdn/Zn+UQF/DbT3SnfEM5q3rutA8cXTty0DAWa51LY9gky/cwBGlj2CADylpp0Idg1Xk00Pf2X9cMkacKXj4ajlzZ8d+V94xFhU4fmDeetn/eLuOxadChm7Wd4tydDa/FXvv2+T2HiDCBnWywlLJ+04rFNynnyyDqdzbL7ZCDHO9ktZ3Js/WeQwI7s5CzTtNRGRdXOWcre9EwvGLavtmI4pAVswrmMY6246vMS3Jb1FtvR9xX9rdq1+Q+rHtftsnGV7OHEkFiDVn+ztd5dcpX9IUtUyTs3u6v63RGHQhHDGwJQCzhgRZuhlDklgG+Aj9L2Iwb5nHzlnRMBdXc/WqUBzyvcAkWzB6qSTTquAPqsxePa7YTyKhHHj3Hs9JtoYVhKa3ZmlzIDV4Nga/a3oWaI55/4zbteh4Br/WIw21JZRxGYVIoCHuZVQne2B4Foqxwdfveeieh0DbKLIlXo7AEO4H5oOoBEFok7hr3pjwVfNZm/u1xX5eD8zc7W+uuzl/+iTLw1qQ24dQqnqniTRKDIjA+dWZekVQnbBBoq16jzwtF1qFwMBG7UBK7JDDI=
