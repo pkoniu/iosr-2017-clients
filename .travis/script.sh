@@ -1,7 +1,8 @@
 #!/bin/sh
 
 sh .travis/dockerhub/build.sh
-sh .travis/heroku/build.sh
-npm run infra
 sh .travis/dockerhub/push.sh
-sh .travis/heroku/push.sh
+npm run infra
+heroku git:remote -a $(HEROKU_APP_NAME)-staging
+git push heroku master
+npm run test:integration

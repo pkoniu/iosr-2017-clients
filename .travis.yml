@@ -15,14 +15,9 @@ install:
 before_script:
 - npm test
 script:
-- sh .travis/dockerhub/build.sh
-- sh .travis/dockerhub/push.sh
-- npm run infra
-- heroku git:remote -a iosr2017clients-staging
-- git push heroku master
-- npm run test:integration
+- sh .travis/script.sh
 after_success:
-- heroku pipelines:promote -a iosr2017clients-staging -r master -t iosr2017clients-production
+- sh .travis/after_success.sh
 env:
   global:
   - DOCKER_USER=iosr2017
