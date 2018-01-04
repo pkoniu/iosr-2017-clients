@@ -10,6 +10,7 @@ node_js:
 before_install:
 - openssl aes-256-cbc -K $encrypted_b7b87b4dd2e2_key -iv $encrypted_b7b87b4dd2e2_iv -in .netrc.enc -out .netrc -d
 - git clone https://github.com/pkoniu/iosr-2017-deployment.git
+- pwd
 - sh iosr-2017-deployment/before_install.sh
 install:
 - npm install
