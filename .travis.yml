@@ -8,7 +8,7 @@ language: node_js
 node_js:
 - '8'
 before_install:
-- git clone git@github.com:pkoniu/iosr-2017-deployment.git
+- git clone https://github.com/pkoniu/iosr-2017-deployment.git
 - sh pkoniu/iosr-2017-deployment/before_install.sh
 install:
 - npm install
