@@ -53,6 +53,7 @@ module.exports = (mongodb) => {
                     message: `User ${userToLogin.login} not found.`
                 });
             }
+            console.log('####', userToLogin.password, toAuthenticate.password);
 
             const compareResult = await bcrypt.compare(userToLogin.password, toAuthenticate.password);
             if (!compareResult) {
