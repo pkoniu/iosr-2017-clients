@@ -42,6 +42,9 @@ module.exports = (collection) => {
                         updatedClient
                     };
                 });
+        },
+        getByQuery(query) {
+            return collection.find(query).toArray();
         }
     };
 };

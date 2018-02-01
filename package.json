@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "assert": "^1.4.1",
+    "bcrypt": "^1.0.3",
     "body-parser": "~1.15.2",
     "cookie-parser": "~1.4.3",
     "cors": "^2.8.4",
@@ -19,6 +20,7 @@
     "eureka-js-client": "^4.4.0",
     "express": "~4.14.0",
     "heroin-js": "^1.20.1",
+    "jsonwebtoken": "^8.1.1",
     "lodash": "^4.17.4",
     "mocha": "^4.1.0",
     "mongodb": "^2.2.33",
